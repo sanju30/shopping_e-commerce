@@ -1,0 +1,17 @@
+.badge {
+    content: attr(value);
+    font-size: 12px;
+    background: #ffc107;
+    color: black;
+    border-radius: 56%;
+    padding: 3px;
+    position: relative;
+    left: -22px;
+    top: -10px;
+    opacity: 0.9;
+}
+
+.icon
+{
+    font-size: 26px;
+}
