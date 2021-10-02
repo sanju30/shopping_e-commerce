@@ -13,8 +13,7 @@ export class AddToCartComponent implements OnInit {
   cartItems: any[] = [];
   cartBadge = 0;
   
-  constructor(private messenger: MessengerService,
-    private addCart : AddToCartComponent) { }
+  constructor(private messenger: MessengerService) { }
 
   ngOnInit(): void {
     this.messenger.sendCartInfo().subscribe((product: any) => {
