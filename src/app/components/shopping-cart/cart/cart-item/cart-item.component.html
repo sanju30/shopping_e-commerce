@@ -1,6 +1,8 @@
-<div col-sm-3>
-    <span>{{itemDetails.productName}}</span> X 
-    <span>{{itemDetails.qty}} </span>
-    <small class="text-muted">{{ (itemDetails.qty * itemDetails.price) | currency : "INR" }}</small>
+<div>
+  <h6 class="my-0">{{ itemDetails.productName }}</h6>
+  <small class="text-muted">Quantity - {{ itemDetails.qty }}</small>
+  <small class="mr-5 fas fa-trash float-end" (click)="onRemoveCart()"></small>
 </div>
-
+<span class="text-muted">{{
+  itemDetails.qty * itemDetails.price | currency: "INR"
+  }}</span>

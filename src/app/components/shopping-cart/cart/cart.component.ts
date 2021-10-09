@@ -1,34 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/modal/product';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { RemoveFromCartService } from 'src/app/services/remove-from-cart.service';
+import { CartItems, Products } from 'src/interface/product';
+
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  templateUrl: './cart.component.html'
 })
 export class CartComponent implements OnInit {
 
-  cartItems: any[] = [
-    //   { id: "1", productId: "1", productName: "1 productName", qty: 4, price: 100 },
-    //   { id: "2", productId: "2", productName: "2 productName", qty: 4, price: 1000 },
-    //   { id: "3", productId: "3 ", productName: "3 productName", qty: 4, price: 400 }
-  ]
+  public cartItems: CartItems[] = [];
 
-  cartTotal = 0;
+  public cartTotal = 0;
 
-  constructor(private messenger: MessengerService) { }
-
-  ngOnInit(): void {
-    this.messenger.sendCartInfo().subscribe((product: any) => {
-      this.addProductToCart(product)
+  /**Get the total item in cart */
+  private findCartTotal(): void {
+    this.cartTotal = 0;
+    this.cartItems.forEach((item) => {
+      this.cartTotal += (item.qty * item.price)
     })
   }
 
-  addProductToCart(product: { id: any; name: any; price: any; }) {
+  /**Remove the product detail from cart */
+  private removeProductDetailFromCart(productId: string): void {
+    this.cartItems = this.cartItems.filter((data) => data.productId != productId)
+    this.findCartTotal();
+  }
 
+  /**Add product to the cart */
+  private addProductToCart(product: Products): void {
     let productExist = false;
 
+    //Add a new product 
     for (let i in this.cartItems) {
       if (this.cartItems[i].productId == product.id) {
         this.cartItems[i].qty++;
@@ -37,18 +41,32 @@ export class CartComponent implements OnInit {
       }
     }
 
+    // if product already exists 
     if (!productExist) {
       this.cartItems.push({
         productId: product.id,
         productName: product.name,
         qty: 1,
-        price: product.price
+        price: product.price,
+        image: product.image
       })
     }
-
-    this.cartTotal = 0;
-    this.cartItems.forEach((item) => {
-      this.cartTotal += (item.qty * item.price)
-    })
+    this.findCartTotal();
   }
+
+  constructor(private messenger: MessengerService, private removeFromCart: RemoveFromCartService) { }
+
+  public ngOnInit(): void {
+    this.messenger.sendCartInfo().subscribe((product) => {
+      this.addProductToCart(product)
+    })
+    this.removeFromCart.sendProductDetails().subscribe((productId) =>
+      this.removeProductDetailFromCart(productId))
+  }
+
+
+
+
+
+
 }
