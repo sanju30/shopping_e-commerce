@@ -1,6 +1,10 @@
+<!-- p - for classes that set padding -->
+<!-- y - for classes that set both *-top and *-bottom -->
 <div class="album py-5 bg-light">
   <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <!-- md - margin for desktop in bootstrap -->
+    <!-- g - The gutters between columns  -->
+    <div class="row row-cols-1 row-cols-md-5 g-3">
       <div class="col" *ngFor="let product of productsList">
         <app-product-item [productDetails]="product"></app-product-item>
       </div>

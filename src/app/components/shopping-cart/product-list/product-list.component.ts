@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/modal/product';
 import { ProductService } from 'src/app/services/product.service';
 
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -10,13 +9,13 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
+  public productsList!: Product[];
 
-  productsList!: Product[];
+  constructor(private productService: ProductService) { }
 
-  constructor(private productservice: ProductService) { }
-
+  /**Get the product list from the service */
   ngOnInit(): void {
-    this.productsList = this.productservice.getProducts();
+    this.productsList = this.productService.getProducts();
   }
 
 }

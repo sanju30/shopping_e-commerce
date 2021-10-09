@@ -15,9 +15,9 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onClickOfAddCart()
-  {
+  
+  /**Send the product details to the cart  */
+  public onClickOfAddCart(): void {
     this.messenger.getProductDetails(this.productDetails);
   }
 }
