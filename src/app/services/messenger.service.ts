@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { Product } from '../modal/product';
+import { Observable, Subject } from 'rxjs';
+import { Products } from 'src/interface/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessengerService {
 
-  addCartInfo = new Subject(); 
+  public addCartInfo = new Subject<Products>();
 
-  constructor() { }
-
-  getProductDetails(product:Product) {
+  /**Get product info that has to be sent to the cart */
+  public getProductDetails(product: Products): void {
     this.addCartInfo.next(product);
   }
 
-  sendCartInfo() {
+  /**Observable */
+  public sendCartInfo(): Observable<Products> {
     return this.addCartInfo.asObservable();
   }
 }
