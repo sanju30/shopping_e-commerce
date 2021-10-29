@@ -1,27 +1,23 @@
 # ShoppingCart
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7
 
-## Development server
+# e-commerce website for books
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![image](https://user-images.githubusercontent.com/33180707/139455111-098c3a48-5a12-4a23-9ec3-f3b4a68f90bd.png)
 
-## Code scaffolding
+![image](https://user-images.githubusercontent.com/33180707/139459902-c2bf199f-e8d4-41dd-827d-258a08b140c9.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+# features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1) Adding books to the cart.
+2) Navigation from the main page to the checkout page on click of the cart icon.
+3) On the checkout page you can see the list of items added to the cart.
+4)You can see the total amount for all the books with the quantity of the books selected.
+5) you can also delete the items in the cart and see the total amount to be paid getting updating.
 
-## Running unit tests
+# demo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+https://user-images.githubusercontent.com/33180707/139459294-589de5bd-7b6a-4f05-82a1-8ed2f7139e9f.mp4
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
